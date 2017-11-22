@@ -14,7 +14,7 @@ export class DataService {
   getUsers() {
   return this._http.get("/api/users")
   .do(result => {
-    console.log(`blah: ${result.json().data[0].name}`)
+    //console.log(`blah: ${result.json().data[0].name}`)
      })
   .map(result => this.result = result.json().data);
   }

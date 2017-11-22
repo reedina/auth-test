@@ -28,9 +28,25 @@ const options = {
 router.get('/users', function(req, res) {
 
    request(options, function(err1, res1, body1) {
-
+   console.log(`response error: ${err1}`);
+  console.log(`response status code: ${res1.statusCode}`);
+  console.log(`response header: ${res1.headers['content-type']}`);
+  console.log(`response body: ${body1}`);
       let obj = JSON.parse(body1);
+      /*
+           Convert the JSON response thats a string value into an actual javascript object we
+          can work with
 
+          This is where i can go ahead and aggregate services
+
+      */
+      //console.log(obj.data);
+      //console.log(obj);
+
+
+      /*
+        we return a JSON object to be processed by the Angular service
+      */
      res.json(obj);
 
    });
