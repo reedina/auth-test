@@ -1,0 +1,11 @@
+The Plan for aggregating services.
+
+We can do this in two places:
+
+(1) backend
+In the backend, we can create a service that calls "other services" and abstracts out the data sets
+
+
+(2) Client Side
+The Express route encapsulates the call to the gateway upstream url.  Given this, we can have the
+Express route call multiple gateway upstream URLs and package the data for the Angular service.
