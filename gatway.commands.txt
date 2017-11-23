@@ -27,3 +27,12 @@ docker run -d --name kong \
     -p 8001:8001 \
     -p 8444:8444 \
     kong:latest
+
+
+// create route in API gateway for testing users
+
+curl -i -X POST \
+  --url http://localhost:8001/apis/ \
+  --data 'name=gateway-test' \
+  --data 'hosts=basic-user' \
+  --data 'upstream_url=http://192.168.0.2:3100/users'
