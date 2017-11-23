@@ -1,8 +1,21 @@
-<h1>Our Application works now!</h1>
 
+<mat-toolbar>
+PSSocial
+<span style="flex: 1 1 auto"></span>
+<button mat-button routerLink="/register">Register</button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+
+
+
+<!--
+  <hr>
 <app-messages></app-messages>
 
 <hr/>
 <ul>
 <li *ngFor="let user of users">{{ user.name }}</li>
 </ul>
+-->

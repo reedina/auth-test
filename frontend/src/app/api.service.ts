@@ -16,7 +16,12 @@ export class ApiService {
     return this.http.get('/psight/posts')
     .do(result => { console.log(`getMessages service: ${result.json()}`)})
     .map(result => this.result  = result.json().data);
+  }
 
+  sendUserRegistration(registrationData) {
+      this.http.post('http:/psight/register',registrationData).subscribe(res => {
+        console.log("Posted User Registration Data");
+  });
   }
 }
 
