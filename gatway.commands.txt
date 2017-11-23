@@ -1,4 +1,9 @@
-// RUN POSTGRESQL
+// STOP POSTGRESQL Locally
+❯ sudo /etc/init.d/postgresql stop                                                                                                            ⏎
+[sudo] password for reedina02: 
+ * Stopping PostgreSQL 9.3 database server  
+
+// RUN POSTGRESQL - Container
 docker run -d --name kong-database \
               -p 5432:5432 \
               -e "POSTGRES_USER=kong" \
