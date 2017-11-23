@@ -11,6 +11,7 @@ const psight = require('./server/routes/psight');
 
 // Parsers
 app.use(bodyParser.json());
+app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Angular DIST output folder
