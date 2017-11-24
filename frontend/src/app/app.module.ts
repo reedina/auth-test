@@ -15,10 +15,16 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
 import { AuthService } from './auth.service';
+import { UsersComponent } from './users.component';
+import { ProfileComponent } from './profile.component';
+import {MatListModule} from '@angular/material/list';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'profile/:id', component: ProfileComponent },
 
 ];
 @NgModule({
@@ -27,6 +33,8 @@ const routes = [
     MessagesComponent,
     RegisterComponent,
     LoginComponent,
+    UsersComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +42,11 @@ const routes = [
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
+    MatListModule,
     MatInputModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

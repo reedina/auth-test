@@ -9,6 +9,8 @@ const  jwt = require('jwt-simple');
 
 var User = require('../../models/User.js');
 
+mongoose.Promise = Promise;
+
 mongoose.connect('mongodb://test:test@ds119476.mlab.com:19476/pssocial',
 { userMongoClient: true },  (err) => {
     if (!err)
@@ -30,6 +32,34 @@ router.get('/posts', function(req, res) {
   res.json(posts);
 
 });
+
+router.get('/users', async (req, res) => {
+  //res.send('hello world');
+  try {
+    var users = await User.find({}, '-pwd -__v');
+    res.json(users);
+
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
+router.get('/profile/:id', async (req, res) => {
+  //console.log(req.params.id);
+  //res.send('hello world');
+
+  try {
+    var user = await User.findById(req.params.id, '-pwd -__v');
+    res.json(user);
+
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+
+});
+
 
 router.post('/register', function(req, res) {
   //res.json(posts);
