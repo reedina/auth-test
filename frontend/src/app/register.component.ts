@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './api.service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +12,10 @@ export class RegisterComponent implements OnInit {
 
    post(){
      console.log(this.registerData);
-     this.apiService.sendUserRegistration(this.registerData);
+     this.authService.registerUser(this.registerData);
   }
 
-  constructor(private apiService: ApiService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }

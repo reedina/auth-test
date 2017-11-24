@@ -13,9 +13,12 @@ import { MessagesComponent } from './messages.component';
 import { RegisterComponent } from './register.component';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login.component';
+import { AuthService } from './auth.service';
 
 const routes = [
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 
 ];
 @NgModule({
@@ -23,6 +26,7 @@ const routes = [
     AppComponent,
     MessagesComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ const routes = [
   ],
   providers: [
     DataService,
-    ApiService
+    ApiService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

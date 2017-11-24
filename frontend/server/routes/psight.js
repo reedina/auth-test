@@ -5,6 +5,7 @@ const ObjectID = require('mongodb').ObjectID;
 const request = require('request');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const  jwt = require('jwt-simple');
 
 var User = require('../../models/User.js');
 
@@ -44,6 +45,35 @@ router.post('/register', function(req, res) {
 
   });
   console.log(userData.email);
+  //res.sendStatus(200);
+
+});
+
+router.post('/login', async (req, res) => {
+  //res.json(posts);
+  var userData = req.body;
+  var user = new User(userData);
+  var user = await User.findOne({email: userData.email })
+  console.log(`USER DATA:  ${user}`);
+
+  if(!user)
+     return res.status(401).send({message: 'Email or Password is invalid'});
+
+   if(userData.pwd != user.pwd)
+     return res.status(401).send({message: 'Email or Password is invalid'});
+
+   var payload = {};
+
+   // payload first param
+   // secret second param. The secret is used to decrypt and encrypt the token
+   //
+   var token = jwt.encode(payload,'123');
+   console.log(token);
+
+
+  res.status(200).send({token});
+
+  //console.log(userData.email);
   //res.sendStatus(200);
 
 });
