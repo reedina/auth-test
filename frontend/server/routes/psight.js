@@ -111,7 +111,7 @@ router.post('/login', async (req, res) => {
    if(userData.pwd != user.pwd)
      return res.status(401).send({message: 'Email or Password is invalid'});
 
-   var payload = {};
+   var payload = { sub: user._id};
 
    // payload first param
    // secret second param. The secret is used to decrypt and encrypt the token

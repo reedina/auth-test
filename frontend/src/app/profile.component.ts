@@ -28,7 +28,7 @@ profile
     */
     //console.log(this.route.snapshot.params['id']);
     this.apiService.getProfile(this.route.snapshot.params['id'])
-    .subscribe( res => { console.log(res['email']);
+    .subscribe( res => { console.log(res.mail);
     this.profile = res });
 
   }

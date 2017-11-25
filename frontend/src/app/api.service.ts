@@ -18,9 +18,9 @@ export class ApiService {
   constructor(private http: Http, private httpC: HttpClient) {}
 
   getMessages(userId) {
-    return this.http.get('/psight/posts/' + userId)
-    .do(result => { console.log(`getMessages service: ${result.json()}`)})
-    .map(result => this.result  = result.json());
+    return this.httpC.get<any>('/psight/posts/' + userId)
+    .do(result => { console.log(`getMessages service: ${result}`)})
+    .map(result => this.result  = result);
   }
 
   postMessage(message) {
@@ -30,17 +30,17 @@ export class ApiService {
 }
 
   getUsers() {
-    return this.http.get('/psight/users')
-    .do(result => { console.log(`getUsers service: ${result.json()}`)})
-    .map(result => this.users  = result.json());
+    return this.httpC.get<any>('/psight/users')
+    .do(result => { console.log(`getUsers service: ${result}`)})
+    .map(result => this.users  = result);
   }
 
   getProfile(id)   {
     //let params = new HttpParams();
     //params = params.append('id', id);
 
-    return this.httpC.get('/psight/profile/' + id)
-    .do(result => { console.log(result['email']) });
+    return this.httpC.get<any>('/psight/profile/' + id)
+    .do(result => { console.log(result.email) });
     //.map(result => this.profile  = result);
   }
 
