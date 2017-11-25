@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const  jwt = require('jwt-simple');
 
 var User = require('../../models/User.js');
+var Post = require('../../models/Post.js');
 
 mongoose.Promise = Promise;
 
@@ -19,17 +20,35 @@ mongoose.connect('mongodb://test:test@ds119476.mlab.com:19476/pssocial',
 );
 
 
-let posts = {
-  data: [
-  { message: 'hello'},
-  { message: 'hi'},
-  {message: "good bye"}]
-};
-
-
-router.get('/posts', function(req, res) {
+router.get('/posts/:id', async function(req, res) {
   //res.send('hello world');
-  res.json(posts);
+  //res.json(posts);
+  var author = req.params.id
+  var posts = await Post.find({author})
+  res.json(posts)
+
+});
+
+router.post('/post', function(req, res) {
+  //res.send('hello world');
+
+  var postData = req.body;
+  postData.author ='5a165e281f72756304071f41';
+
+  var post = new Post(postData)
+
+  post.save((err,result) => {
+    if (err) {
+     console.error('Saving post ERROR');
+      return res.status(500).send({message: 'saving post error'});
+    } else  {
+       console.log('Saved post message');
+    }
+
+   res.sendStatus(200);
+
+   });
+  //res.json(posts);
 
 });
 

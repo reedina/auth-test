@@ -15,14 +15,19 @@ export class ApiService {
   users: Array<any>;
 
 
-
   constructor(private http: Http, private httpC: HttpClient) {}
 
-  getMessages() {
-    return this.http.get('/psight/posts')
+  getMessages(userId) {
+    return this.http.get('/psight/posts/' + userId)
     .do(result => { console.log(`getMessages service: ${result.json()}`)})
-    .map(result => this.result  = result.json().data);
+    .map(result => this.result  = result.json());
   }
+
+  postMessage(message) {
+    this.http.post('http:/psight/post',message).subscribe(res => {
+      console.log("Posted Message");
+});
+}
 
   getUsers() {
     return this.http.get('/psight/users')

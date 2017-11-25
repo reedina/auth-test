@@ -19,12 +19,14 @@ import { UsersComponent } from './users.component';
 import { ProfileComponent } from './profile.component';
 import {MatListModule} from '@angular/material/list';
 import {HttpClientModule} from '@angular/common/http';
+import { PostComponent } from './post.component';
 
 const routes = [
+  { path: '', component: PostComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'profile/:id', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent }
 
 ];
 @NgModule({
@@ -34,7 +36,8 @@ const routes = [
     RegisterComponent,
     LoginComponent,
     UsersComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
